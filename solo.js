@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require('./botconfig.json'); //Reads config (prefix, maybe owner in the future, etc.) from external file
+const config = require('./botconfig.json'); //Reads config (prefix, token, maybe owner in the future, etc.) from external file
 
 const prefix = config.prefix; //Reads the prefix from botconfig.json
 var Solo = new Discord.Client({
@@ -34,4 +34,4 @@ function debugLog(commandName, user)
     console.log(`Command ${commandName} was used by ${user}`);
 }
 
-Solo.login('NDcxNDE0NjY1MzA2NzAxODQ0.XaIp3w.cIXfAjyk-WXpdift8Jpu92kYIVU');
+Solo.login(config.token);
