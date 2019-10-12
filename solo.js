@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 var Solo = new Discord.Client({disableEveryone: true});
 
-Bot.on("ready", async () => {
+Solo.on("ready", async () => {
     console.log('Logged in as ${Solo.user.tag}');
 });
 
