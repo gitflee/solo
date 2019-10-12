@@ -21,6 +21,7 @@ Solo.on("message", async message => {
 
     if(cmd === `${prefix}ping`)
     {
+        debugLog(cmd, message.author.username);
         let ping = Math.round(Solo.ping);
         return message.channel.send(`${ping} ms`);
     }
