@@ -1,0 +1,2 @@
+node solo.js
+pause
