@@ -29,6 +29,7 @@ Solo.on("message", async message => {
 
 
 
+
 function debugLog(commandName, user)
 {
     console.log(`Command ${commandName} was used by ${user}`);
