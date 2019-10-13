@@ -29,13 +29,6 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
-
-# Dependency directories
-node_modules/
-jspm_packages/
-
 # TypeScript v1 declaration files
 typings/
 
@@ -44,6 +37,7 @@ typings/
 
 # Optional eslint cache
 .eslintcache
+node_modules
 
 # Optional REPL history
 .node_repl_history
@@ -59,3 +53,6 @@ typings/
 
 # next.js build output
 .next
+
+# config
+config/botconfig.json
