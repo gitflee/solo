@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require('./botconfig.json'); //Reads config (prefix, token, maybe owner in the future, etc.) from external file
+const config = require('config/botconfig.json'); //Reads config (prefix, token, maybe owner in the future, etc.) from external file
 
 const prefix = config.prefix; //Reads the prefix from botconfig.json
 var Solo = new Discord.Client({
