@@ -54,4 +54,4 @@ typings/
 .next
 
 # config
-config/
+config/botconfig.json
