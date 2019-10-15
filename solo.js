@@ -1,37 +1,40 @@
-const Discord = require('discord.js');
-const config = require('./config/botconfig.json'); //Reads config (prefix, token, maybe owner in the future, etc.) from external file
-const prefix = config.prefix; //Reads the prefix from botconfig.json
-var Solo = new Discord.Client({
-    disableEveryone: true
-});
-const fs = require('fs');
+const Discord = require("discord.js");
+const Enmap = require("enmap");
+const fs = require("fs");
 
-Solo.on("ready", async () => {
-    console.log('Logged in.');
-});
+const Solo = new Discord.Client();
 
-Solo.on("message", async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    let msgArray = message.content.split(' ');
-    
-    let cmd = msgArray[0].toLowerCase(); //CMD
-    let arg = msgArray.slice(1); //All the args after the Command as an Array
-
-    if(cmd === `${prefix}ping`)
-    {
-        debugLog(cmd, message.author.username);
-        let ping = Math.round(Solo.ping);
-        return message.channel.send(`${ping} ms`);
-    }
+fs.readdir("./events/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    const event = require(`./events/${file}`);
+    let eventName = file.split(".")[0];
+    Solo.on(eventName, event.bind(null, Solo));
+  });
 });
 
+Solo.serverDB = new Enmap({
+  name: 'serverDB',
+  fetchAll: false,
+  autoFetch: true,
+  cloneLevel: 'deep'
+});
 
+Solo.commands = new Enmap();
 
+Solo.serverDB.defer.then(() => {
+  console.log('ENMAP: ' + Solo.serverDB.size + ' elements loaded from Database serverDB.');
+});
 
-function debugLog(commandName, user)
-{
-    console.log(`Command ${commandName} was used by ${user}`);
-}
+fs.readdir("./commands/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    if (!file.endsWith(".js")) return;
+    let props = require(`./commands/${file}`);
+    let commandName = file.split(".")[0];
+    console.log(`Attempting to load command ${commandName}`);
+    Solo.commands.set(commandName, props);
+  });
+});
 
-Solo.login(config.token);
+Solo.login('NDcxNDE0NjY1MzA2NzAxODQ0.XaMCBA.QwCZ0JfoYyxb4oSPDjZ9mZwbYBM');
