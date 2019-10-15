@@ -1,4 +1,4 @@
-# solo
+# Solo
 [![Build Status](https://travis-ci.org/gitflee/solo.png?branch=master)](https://travis-ci.org/gitflee/solo)
 
 Solo is a powerful Discord Bot used for Moderation, Server Statistics, Utility Commands and so on.
