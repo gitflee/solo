@@ -37,7 +37,6 @@ typings/
 
 # Optional eslint cache
 .eslintcache
-node_modules
 
 # Optional REPL history
 .node_repl_history
@@ -53,6 +52,3 @@ node_modules
 
 # next.js build output
 .next
-
-# config
-config/botconfig.json

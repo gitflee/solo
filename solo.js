@@ -1,6 +1,10 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
 const fs = require("fs");
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+})
 
 const Solo = new Discord.Client();
 
@@ -37,4 +41,6 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-Solo.login('NDcxNDE0NjY1MzA2NzAxODQ0.XaMCBA.QwCZ0JfoYyxb4oSPDjZ9mZwbYBM');
+readline.question('Please enter the Bot Token.\n', (token) => {
+  Solo.login(token);
+})
