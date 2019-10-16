@@ -1,8 +1,21 @@
 module.exports = (Solo, message) => {
   // Ignore all bots
+  let prefix;
   if (message.author.bot) return;
   let serverID = message.guild.id;
-  let prefix = Solo.serverDB.get(String(serverID), "prefix");
+  try {
+    prefix = Solo.serverDB.get(String(serverID), "prefix");
+  } catch (error) {
+    const serverInit = {
+      prefix: '*',
+      logchannel: undefined,
+      modules: {
+        moderation: true,
+        security: false
+      }
+    }
+    Solo.serverDB.set(String(serverID), serverInit);
+  }
   // Ignore messages not starting with the prefix (in config.json)
   if (message.content.indexOf(prefix) !== 0) return;
 
