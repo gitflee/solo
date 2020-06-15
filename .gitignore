@@ -32,6 +32,8 @@ bower_components
 # TypeScript v1 declaration files
 typings/
 
+**/config/
+
 # Optional npm cache directory
 .npm
 
@@ -53,4 +55,3 @@ typings/
 # next.js build output
 .next
 
-config/
